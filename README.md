@@ -1,6 +1,23 @@
 # alx-project-nexus
-## Project Overview
 
+# Poll Nexus — Online Poll System
+
+A responsive web app to create polls, vote, and see live results. Built with Next.js, TypeScript, Tailwind CSS, and Socket.io for real-time updates.
+
+**Live demo:** <paste your deployed URL here>  
+**Repo:** https://github.com/<your-username>/<repo-name>
+
+## Features
+- Create polls with multiple options and optional expiry
+- Cast votes (single or multi-option as configured)
+- Live results with charts (updates via WebSockets)
+- Browse polls with search, filters (active/expired), and pagination
+- Share poll links; basic anti-duplicate-vote protection (IP/cookie or auth)
+
+## Tech
+Next.js · TypeScript · Tailwind CSS · Redux Toolkit / React Query · Recharts · Socket.io · Jest / React Testing Library
+
+## Project Overview
 Project Nexus is a documentation repository that captures my journey through the ProDev Frontend Engineering program. It explains the concepts I learned, the projects I built, problems I encountered, and the engineering practices I adopted.
 
 ### This repo is meant to be:
