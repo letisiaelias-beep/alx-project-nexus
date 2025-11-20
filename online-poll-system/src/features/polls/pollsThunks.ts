@@ -1,25 +1,18 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = "https://api.example.com/polls";
+const API_URL = process.env.REACT_APP_POLLS_API || "http://localhost:4000/api/polls";
 
 export const fetchPolls = createAsyncThunk("polls/fetch", async () => {
-  const res = await axios.get(API_URL);
-  return res.data;
+  try {
+    const res = await axios.get(API_URL);
+    return res.data;
+  } catch (err) {
+   
+    // fallback to mock
+    return [
+      { id: "1", title: "What's your favourite color?", image: "/assets/screens.png", totalVotes: 154, status: "active" },
+      { id: "2", title: "Lunch today?", image: "/assets/screens.png", totalVotes: 99, status: "closed" },
+    ];
+  }
 });
-
-export const voteOnPoll = createAsyncThunk(
-  "polls/vote",
-  async ({ pollId, optionId }: { pollId: string; optionId: string }) => {
-    const res = await axios.post(`${API_URL}/${pollId}/vote`, { optionId });
-    return res.data;
-  }
-);
-
-export const createPoll = createAsyncThunk(
-  "polls/create",
-  async (pollData: PollCreateRequest) => {
-    const res = await axios.post(API_URL, pollData);
-    return res.data;
-  }
-);
