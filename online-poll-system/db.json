@@ -1,0 +1,6 @@
+{
+  "polls": [
+    { "id": "1", "title": "What's your favourite color?", "image": "/assets/screens.png", "totalVotes": 154, "status": "active" },
+    { "id": "2", "title": "Lunch today?", "image": "/assets/screens.png", "totalVotes": 99, "status": "closed" }
+  ]
+}
