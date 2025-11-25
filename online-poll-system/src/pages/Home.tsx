@@ -4,8 +4,8 @@ import { fetchPolls } from "../features/polls/pollsThunks";
 import PollCard from "../components/PollCard";
 import { useNavigate } from "react-router-dom";
 import type { RootState } from "../store/store";
-type Poll = { id: string; [key: string]: any };
-
+// Update the import path based on where Poll type is actually exported
+import type { Poll } from "../types/poll";
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -38,7 +38,7 @@ const Home: React.FC = () => {
         </div>
       </header>
 
-      {/* Optional loading/error display */}
+      {/* Loading/Error display */}
       {loading && <p>Loading polls...</p>}
       {error && <p className="text-red-500">{error}</p>}
 
