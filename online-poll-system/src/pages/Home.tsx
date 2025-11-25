@@ -4,8 +4,7 @@ import { fetchPolls } from "../features/polls/pollsThunks";
 import PollCard from "../components/PollCard";
 import { useNavigate } from "react-router-dom";
 import type { RootState } from "../store/store";
-// Update the import path based on where Poll type is actually exported
-import type { Poll } from "../types/poll";
+import type { Poll } from "../features/polls/pollsSlice"; // ✅ correct
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -14,12 +13,10 @@ const Home: React.FC = () => {
   // Select polls state from Redux store
   const { polls, loading, error } = useAppSelector((state: RootState) => state.polls);
 
-  // Fetch polls on component mount
   useEffect(() => {
     dispatch(fetchPolls());
   }, [dispatch]);
 
-  // Navigate to poll detail page
   const handleOpen = (id: string) => {
     navigate(`/polls/${id}`);
   };
