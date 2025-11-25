@@ -1,8 +1,19 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
+// Update the import path if hooks are located elsewhere, e.g. "../app/hooks"
+// Update the path below to the actual location of your hooks file
+// Update the path below to the actual location of your hooks file
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { fetchPolls } from "../features/polls/pollsThunks";
 import PollCard from "../components/PollCard";
 import { useNavigate } from "react-router-dom";
+
+type Poll = {
+  id: string;
+  title: string;
+  image?: string;
+  totalVotes: number;
+  status: "active" | "closed" | "draft";
+};
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -29,29 +40,21 @@ const Home: React.FC = () => {
           <button className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">Start Your Poll Now</button>
         </div>
       </header>
-
-      <section className="mb-6">
-        <h2 className="text-xl font-semibold mb-3">Recent Polls</h2>
-        {loading && <div className="text-gray-600">Loading polls...</div>}
-        {error && <div className="text-red-600">{error}</div>}
-        {!loading && polls.length === 0 && <div className="text-gray-500">No polls available yet.</div>}
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-          {polls.map((p) => (
-            <PollCard
-              key={p.id}
-              poll={{
-                id: p.id,
-                title: p.title,
-                image: p.image || "/assets/screens.png", // fallback to the screenshot composite if no image
-                totalVotes: p.totalVotes,
-                status: p.status,
-              }}
-              onOpen={handleOpen}
-            />
-          ))}
-        </div>
-      </section>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+        {polls.map((p: Poll) => (
+          <PollCard
+            key={p.id}
+            poll={{
+              id: p.id,
+              title: p.title,
+              image: p.image || "/assets/screens.png", // fallback to the screenshot composite if no image
+              totalVotes: p.totalVotes,
+              status: p.status,
+            }}
+            onOpen={handleOpen}
+          />
+        ))}
+      </div>
     </div>
   );
 };
