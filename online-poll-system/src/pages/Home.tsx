@@ -1,30 +1,25 @@
 import React, { useEffect } from "react";
-// Update the import path if hooks are located elsewhere, e.g. "../app/hooks"
-// Update the path below to the actual location of your hooks file
-// Update the path below to the actual location of your hooks file
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { fetchPolls } from "../features/polls/pollsThunks";
 import PollCard from "../components/PollCard";
 import { useNavigate } from "react-router-dom";
+import type { RootState } from "../store/store";
+type Poll = { id: string; [key: string]: any };
 
-type Poll = {
-  id: string;
-  title: string;
-  image?: string;
-  totalVotes: number;
-  status: "active" | "closed" | "draft";
-};
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { polls, loading, error } = useAppSelector((s) => s.polls);
 
+  // Select polls state from Redux store
+  const { polls, loading, error } = useAppSelector((state: RootState) => state.polls);
+
+  // Fetch polls on component mount
   useEffect(() => {
-    // fetch polls on mount
     dispatch(fetchPolls());
   }, [dispatch]);
 
+  // Navigate to poll detail page
   const handleOpen = (id: string) => {
     navigate(`/polls/${id}`);
   };
@@ -37,19 +32,25 @@ const Home: React.FC = () => {
           <p className="text-gray-600">Create polls, vote, and view live results.</p>
         </div>
         <div>
-          <button className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">Start Your Poll Now</button>
+          <button className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">
+            Start Your Poll Now
+          </button>
         </div>
       </header>
+
+      {/* Optional loading/error display */}
+      {loading && <p>Loading polls...</p>}
+      {error && <p className="text-red-500">{error}</p>}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-        {polls.map((p: Poll) => (
+        {polls.map((poll: Poll) => (
           <PollCard
-            key={p.id}
+            key={poll.id}
             poll={{
-              id: p.id,
-              title: p.title,
-              image: p.image || "/assets/screens.png", // fallback to the screenshot composite if no image
-              totalVotes: p.totalVotes,
-              status: p.status,
+              ...poll, // spread all properties
+              title: poll.title ?? "Untitled Poll",
+              totalVotes: poll.totalVotes ?? 0, // ensure totalVotes is always a number
+              image: poll.image || "/assets/screens.png", // fallback image
             }}
             onOpen={handleOpen}
           />
