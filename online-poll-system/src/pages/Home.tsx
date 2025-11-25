@@ -4,7 +4,7 @@ import { fetchPolls } from "../features/polls/pollsThunks";
 import PollCard from "../components/PollCard";
 import { useNavigate } from "react-router-dom";
 import type { RootState } from "../store/store";
-import type { Poll } from "../features/polls/pollsSlice"; 
+import type { Poll } from "../features/polls/pollsSlice";
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -21,32 +21,42 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
-      <header className="flex items-center justify-between mb-6">
+    <div className="max-w-6xl mx-auto px-6 py-10">
+
+      {/* ⭐ Modern Clean Header */}
+      <header className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10">
         <div>
-          <h1 className="text-3xl font-bold">Instant Polls, Real-time Results</h1>
-          <p className="text-gray-600">Create polls, vote, and view live results.</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+            Instant Polls, Real-time Results
+          </h1>
+          <p className="text-gray-600 mt-3 text-lg">
+            Create polls, vote, and view live results.
+          </p>
         </div>
-        <div>
-          <button className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">
-            Start Your Poll Now
-          </button>
-        </div>
+
+        <button className="mt-4 md:mt-0 bg-teal-600 text-white px-5 py-2.5 rounded-md hover:bg-teal-700 transition shadow-sm">
+          Start Your Poll Now
+        </button>
       </header>
 
-      {/* Loading/Error display */}
-      {loading && <p>Loading polls...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+      {/* Loading/Error */}
+      {loading && (
+        <p className="text-center text-gray-600 text-lg">Loading polls...</p>
+      )}
+      {error && (
+        <p className="text-red-500 text-center font-medium">{error}</p>
+      )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+      {/* ⭐ Polls Grid - modern and clean */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {polls.map((poll: Poll) => (
           <PollCard
             key={poll.id}
             poll={{
-              ...poll, // spread all properties
+              ...poll,
               title: poll.title ?? "Untitled Poll",
-              totalVotes: poll.totalVotes ?? 0, // ensure totalVotes is always a number
-              image: poll.image || "/assets/screens.png", // fallback image
+              totalVotes: poll.totalVotes ?? 0,
+              image: poll.image || "/assets/screens.png",
             }}
             onOpen={handleOpen}
           />
