@@ -2,14 +2,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchPolls } from "./pollsThunks";
 
-type Poll = {
-  id: string;
-  title: string;
-  image?: string;
-  totalVotes?: number;
-  status?: string;
-};
-
 interface PollState {
   polls: Poll[];
   loading: boolean;
@@ -38,3 +30,11 @@ const pollsSlice = createSlice({
 });
 
 export default pollsSlice.reducer;
+
+export interface Poll {
+  id: string;
+  title: string;
+  image?: string;
+  totalVotes?: number;
+  status: "active" | "closed" | "draft";
+}

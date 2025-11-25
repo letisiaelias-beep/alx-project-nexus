@@ -1,12 +1,14 @@
 import React from "react";
-import Home from "../pages/Home"; // adjust path if your pages folder is somewhere else
-import "./App.css"; // keep your styles
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import PollDetail from "./pages/PollDetail";
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/polls/:id" element={<PollDetail />} />
+    </Routes>
   );
 }
 
