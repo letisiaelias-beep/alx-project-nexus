@@ -38,6 +38,30 @@ const Home: React.FC = () => {
           Start Your Poll Now
         </button>
       </header>
+<div className="max-w-6xl mx-auto px-6 py-10">
+  <header className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10">
+    <div>
+      <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+        Instant Polls, Real-time Results
+      </h1>
+      <p className="text-gray-600 mt-3 text-lg">Create polls, vote, and view live results.</p>
+    </div>
+
+    <button className="mt-4 md:mt-0 bg-teal-600 text-white px-5 py-2.5 rounded-md hover:bg-teal-700 transition shadow-sm">
+      Start Your Poll Now
+    </button>
+  </header>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {Array.isArray(polls) && polls.length ? (
+      polls.map((poll: Poll) => (
+        <PollCard key={poll.id} poll={poll} onOpen={handleOpen} />
+      ))
+    ) : (
+      <p className="text-gray-600">No polls yet</p>
+    )}
+  </div>
+</div>
 
       {/* Loading/Error */}
       {loading && (

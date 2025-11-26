@@ -8,6 +8,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/polls/:id" element={<PollDetail />} />
+      <Route path="/poll/:id" element={<PollDetail />} />
+
     </Routes>
   );
 }
