@@ -1,4 +1,3 @@
-// src/features/polls/pollsSlice.ts
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchPolls } from "./pollsThunks";
 
