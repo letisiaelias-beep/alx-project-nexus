@@ -1,3 +1,4 @@
+// src/App.tsx
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
@@ -11,7 +12,7 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/create" element={<CreatePoll />} />
-      <Route path="/poll/:id" element={<PollDetail />} />
+      <Route path="/polls/:id" element={<PollDetail />} />
     </Routes>
   );
 }

@@ -1,5 +1,6 @@
 // src/features/polls/pollsSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createPoll, fetchPolls } from "./pollsThunks"; // ✅ import thunks
 
 export interface Poll {
   id: string;
@@ -31,7 +32,7 @@ const pollsSlice = createSlice({
       state.error = null;
     },
     addPoll(state, action: PayloadAction<Poll>) {
-      state.polls.unshift(action.payload); // add to front
+      state.polls.unshift(action.payload);
     },
     updatePoll(state, action: PayloadAction<Poll>) {
       const idx = state.polls.findIndex((p) => p.id === action.payload.id);
@@ -48,9 +49,30 @@ const pollsSlice = createSlice({
       state.loading = false;
     },
   },
-});
-
-export const { setPolls, addPoll, updatePoll, removePoll, setLoading, setError } =
-  pollsSlice.actions;
-
-export default pollsSlice.reducer;
+  extraReducers: (builder) => {
+    builder
+      // Fetch Polls
+      .addCase(fetchPolls.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchPolls.fulfilled, (state, action: PayloadAction<Poll[]>) => {
+        state.polls = action.payload;
+        state.loading = false;
+      })
+      .addCase(fetchPolls.rejected, (state, action) => {
+        state.error = action.payload as string;
+        state.loading = false;
+      })
+      // Create Poll
+      .addCase(createPoll.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(createPoll.fulfilled, (state, action: PayloadAction<Poll>) => {
+        state.polls.unshift(action.payload);
+        state.loading = false;
+      })
+      .addCase(createPoll.rejected, (state, action) => {
+        state.error
+  = action.payload as string;
