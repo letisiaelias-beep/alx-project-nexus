@@ -1,4 +1,3 @@
-// src/features/users/userSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -6,13 +5,13 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  token?: string; 
+  token?: string;
 }
 
 interface UserState {
   currentUser: User | null;
   loading: boolean;
-  error: string | null;
+  error?: string | null;
 }
 
 const initialState: UserState = {
@@ -21,19 +20,34 @@ const initialState: UserState = {
   error: null,
 };
 
+// Replace with your backend API URL
+const API_URL = process.env.REACT_APP_USERS_API || "http://localhost:4000/api/users";
 
-export const registerUser = createAsyncThunk<
-  User, // Return type
-  { name: string; email: string; password: string }, // argument type
-  { rejectValue: string }
->("users/registerUser", async (payload, thunkAPI) => {
-  try {
-    const res = await axios.post("/api/register", payload); // your backend endpoint
-    return res.data as User;
-  } catch (err: any) {
-    return thunkAPI.rejectWithValue(err.response?.data?.message || "Registration failed");
+// Async thunk to register a user
+export const registerUser = createAsyncThunk(
+  "users/register",
+  async (payload: { name: string; email: string; password: string }, thunkAPI) => {
+    try {
+      const res = await axios.post(`${API_URL}/register`, payload);
+      return res.data as User;
+    } catch (err: any) {
+      return thunkAPI.rejectWithValue(err.response?.data || err.message);
+    }
   }
-});
+);
+
+// Async thunk to login a user
+export const loginUser = createAsyncThunk(
+  "users/login",
+  async (payload: { email: string; password: string }, thunkAPI) => {
+    try {
+      const res = await axios.post(`${API_URL}/login`, payload);
+      return res.data as User;
+    } catch (err: any) {
+      return thunkAPI.rejectWithValue(err.response?.data || err.message);
+    }
+  }
+);
 
 const userSlice = createSlice({
   name: "users",
@@ -41,24 +55,43 @@ const userSlice = createSlice({
   reducers: {
     logout(state) {
       state.currentUser = null;
+      state.error = null;
+      state.loading = false;
+    },
+    setUser(state, action: PayloadAction<User>) {
+      state.currentUser = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder
+      // Register
       .addCase(registerUser.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(registerUser.fulfilled, (state, action: PayloadAction<User>) => {
-        state.loading = false;
         state.currentUser = action.payload;
+        state.loading = false;
       })
       .addCase(registerUser.rejected, (state, action) => {
+        state.error = action.payload as string;
         state.loading = false;
-        state.error = action.payload ?? "Unknown error";
+      })
+      // Login
+      .addCase(loginUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(loginUser.fulfilled, (state, action: PayloadAction<User>) => {
+        state.currentUser = action.payload;
+        state.loading = false;
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.error = action.payload as string;
+        state.loading = false;
       });
   },
 });
 
-export const { logout } = userSlice.actions;
+export const { logout, setUser } = userSlice.actions;
 export default userSlice.reducer;
