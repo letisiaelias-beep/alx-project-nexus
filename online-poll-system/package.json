@@ -4,7 +4,7 @@
   "test": "react-scripts test",
   "eject": "react-scripts eject"
 }
-/*{
+{
   "name": "online-poll-system",
   "version": "0.1.0",
   "private": true,
@@ -58,4 +58,4 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.18"
   }
-}*/
+}
