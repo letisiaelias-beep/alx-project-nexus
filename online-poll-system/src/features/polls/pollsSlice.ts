@@ -9,6 +9,21 @@ export interface Poll {
   status?: "active" | "closed" | "draft";
 }
 
+export interface PollOption {
+  id: string;
+  text: string;
+  votes: number;
+}
+
+export interface Poll {
+  id: string;
+  title: string;
+  image?: string;
+  totalVotes?: number;
+  status?: "active" | "closed" | "draft";
+  options?: PollOption[];    
+}
+
 type PollsState = {
   polls: Poll[];
   loading: boolean;
