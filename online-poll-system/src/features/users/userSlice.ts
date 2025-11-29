@@ -6,7 +6,7 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  token?: string; // if backend returns JWT
+  token?: string; 
 }
 
 interface UserState {
@@ -21,7 +21,7 @@ const initialState: UserState = {
   error: null,
 };
 
-// Async thunk for registering a user
+
 export const registerUser = createAsyncThunk<
   User, // Return type
   { name: string; email: string; password: string }, // argument type
