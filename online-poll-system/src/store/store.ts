@@ -4,8 +4,8 @@ import userReducer from "../features/users/userSlice";
 
 export const store = configureStore({
   reducer: {
-    polls: pollsReducer,   // polls state
-    users: userReducer,    // user state
+    polls: pollsReducer,  
+    users: userReducer,   
   },
 });
 
