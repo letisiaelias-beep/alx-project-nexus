@@ -1,5 +1,43 @@
 // src/features/polls/pollsThunks.ts
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import type { Poll } from "./pollsSlice";
+
+// FAKE SAMPLE POLLS (frontend-only) — updated question text
+const SAMPLE_POLLS: Poll[] = [
+  {
+    id: "1",
+    title: "What colour do you prefer?",
+    totalVotes: 154,
+    status: "active",
+    options: [
+      { id: "a", text: "Blue", votes: 60 },
+      { id: "b", text: "Green", votes: 40 },
+      { id: "c", text: "Red", votes: 30 },
+      { id: "d", text: "Yellow", votes: 24 },
+    ],
+  },
+];
+
+export const fetchPolls = createAsyncThunk("polls/fetchPolls", async () => {
+  return SAMPLE_POLLS;
+});
+
+export const createPoll = createAsyncThunk(
+  "polls/createPoll",
+  async (payload: Partial<Poll>) => {
+    return {
+      ...payload,
+      id: String(Date.now()),
+      totalVotes: 0,
+      status: "active",
+      options: [],
+    } as Poll;
+  }
+);
+
+
+/*src/features/polls/pollsThunks.ts
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import type { Poll } from "./pollsSlice";
 
@@ -24,4 +62,4 @@ export const createPoll = createAsyncThunk(
       return thunkAPI.rejectWithValue(err.response?.data || err.message);
     }
   }
-);
+);*/
