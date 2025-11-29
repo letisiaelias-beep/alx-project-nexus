@@ -1,8 +1,11 @@
+// src/pages/PollDetail.tsx
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import type { Poll as PollType } from "../features/polls/pollsSlice";
-import { useAppSelector } from "../store/hooks";
+import { useAppSelector, useAppDispatch } from "../store/hooks";
 import type { RootState } from "../store/store";
+// If you implement a vote thunk, import it here:
+// import { voteOnPoll } from "../features/polls/pollsThunks";
 
 const DemoPoll: PollType = {
   id: "demo",
@@ -15,11 +18,15 @@ const DemoPoll: PollType = {
 const PollDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const pollFromStore = useAppSelector((s: RootState) =>
     s.polls?.polls?.find((p: PollType) => String(p.id) === String(id))
   );
   const poll = pollFromStore ?? DemoPoll;
+
+  const totalVotes = poll.totalVotes ?? 0;
+  const isActive = poll.status === "active";
 
   const options = ["Blue", "Green", "Red", "Yellow"];
 
@@ -33,11 +40,18 @@ const PollDetail: React.FC = () => {
       alert("Select an option before submitting.");
       return;
     }
+    if (!isActive) {
+      alert("This poll is closed.");
+      return;
+    }
+
     setSubmitting(true);
     try {
+
       console.log("Submitting vote:", { pollId: poll.id, option: selected });
 
-      navigate(-1); 
+      // Navigate to results page (you must add PollResults route/page)
+      navigate(`/polls/${poll.id}/results`);
     } catch (err) {
       console.error(err);
       alert("Failed to submit vote");
@@ -49,13 +63,21 @@ const PollDetail: React.FC = () => {
   return (
     <div className="max-w-md mx-auto p-6">
       <div className="bg-white rounded-2xl shadow-sm p-6">
+        {poll.image ? (
+          <img
+            src={poll.image}
+            alt={poll.title}
+            className="w-full h-48 object-cover rounded-xl mb-4"
+          />
+        ) : null}
+
         <h2 className="text-xl font-semibold mb-4 text-center">{poll.title}</h2>
 
         <div className="space-y-3">
           {options.map((opt) => {
             const isSelected = selected === opt;
-            const base = "w-full h-12 rounded-xl font-semibold text-white transition-shadow";
-            // choose colors per option to match prototype
+            const base =
+              "w-full h-12 rounded-xl font-semibold text-white transition-shadow focus:outline-none";
             const colorClass =
               opt === "Blue"
                 ? "bg-blue-600 hover:bg-blue-700"
@@ -63,14 +85,20 @@ const PollDetail: React.FC = () => {
                 ? "bg-teal-600 hover:bg-teal-700"
                 : opt === "Red"
                 ? "bg-red-600 hover:bg-red-700"
-                : "bg-yellow-500 hover:bg-yellow-600 text-black";
+                : "bg-yellow-400 hover:bg-yellow-500 text-black";
+
+            // show clear selected state even when disabled
+            const selectedClass = isSelected ? "ring-4 ring-black/10" : "";
 
             return (
               <button
                 key={opt}
                 onClick={() => handleSelect(opt)}
-                className={`${base} ${colorClass} ${isSelected ? "ring-4 ring-black/10" : ""}`}
+                className={`${base} ${colorClass} ${selectedClass}`}
                 aria-pressed={isSelected}
+                aria-disabled={!isActive || submitting}
+                disabled={!isActive || submitting}
+                type="button"
               >
                 {opt}
               </button>
@@ -80,14 +108,16 @@ const PollDetail: React.FC = () => {
 
         <button
           onClick={handleSubmit}
-          disabled={submitting}
-          className="mt-5 w-full h-12 rounded-xl font-semibold bg-gray-900 text-white hover:bg-gray-800 disabled:opacity-60"
+          disabled={submitting || !isActive}
+          className={`mt-5 w-full h-12 rounded-xl font-semibold ${
+            isActive ? "bg-gray-900 hover:bg-gray-800 text-white" : "bg-gray-200 text-gray-500 cursor-not-allowed"
+          } disabled:opacity-60`}
         >
-          {submitting ? "Submitting..." : "Submit Vote"}
+          {submitting ? "Submitting..." : isActive ? "Submit Vote" : "Poll Closed"}
         </button>
 
         <p className="text-center text-gray-500 text-sm mt-4">
-          {poll.totalVotes} votes • Closes in 2 days
+          {totalVotes} votes • {isActive ? "Open" : "Closed"}
         </p>
       </div>
     </div>

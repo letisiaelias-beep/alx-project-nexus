@@ -1,6 +1,5 @@
-// src/features/polls/pollsSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { createPoll, fetchPolls } from "./pollsThunks"; // ✅ import thunks
+import { fetchPolls, createPoll } from "./pollsThunks";
 
 export interface Poll {
   id: string;
@@ -51,7 +50,7 @@ const pollsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Fetch Polls
+
       .addCase(fetchPolls.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -64,7 +63,8 @@ const pollsSlice = createSlice({
         state.error = action.payload as string;
         state.loading = false;
       })
-      // Create Poll
+
+      // createPoll lifecycle
       .addCase(createPoll.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -74,5 +74,13 @@ const pollsSlice = createSlice({
         state.loading = false;
       })
       .addCase(createPoll.rejected, (state, action) => {
-        state.error
-  = action.payload as string;
+        state.error = action.payload as string;
+        state.loading = false;
+      });
+  },
+});
+
+export const { setPolls, addPoll, updatePoll, removePoll, setLoading, setError } =
+  pollsSlice.actions;
+
+export default pollsSlice.reducer;

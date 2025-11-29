@@ -13,9 +13,7 @@ const CreatePoll: React.FC = () => {
   const [options, setOptions] = useState<Option[]>([{ id: "1", text: "" }, { id: "2", text: "" }]);
 
   const handleOptionChange = (id: string, text: string) => {
-    setOptions((prev) =>
-      prev.map((opt) => (opt.id === id ? { ...opt, text } : opt))
-    );
+    setOptions((prev) => prev.map((o) => (o.id === id ? { ...o, text } : o)));
   };
 
   const handleSubmit = async () => {

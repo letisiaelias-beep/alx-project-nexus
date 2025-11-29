@@ -1,3 +1,4 @@
+// src/pages/Home.tsx
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { fetchPolls } from "../features/polls/pollsThunks";
@@ -22,15 +23,12 @@ const Home: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
-      {/* Header */}
       <header className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10">
         <div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
             Instant Polls, Real-time Results
           </h1>
-          <p className="text-gray-600 mt-3 text-lg">
-            Create polls, vote, and view live results.
-          </p>
+          <p className="text-gray-600 mt-3 text-lg">Create polls, vote, and view live results.</p>
         </div>
 
         <button
@@ -41,11 +39,9 @@ const Home: React.FC = () => {
         </button>
       </header>
 
-      {/* Loading/Error */}
       {loading && <p className="text-center text-gray-600 text-lg">Loading polls...</p>}
       {error && <p className="text-red-500 text-center font-medium">{error}</p>}
 
-      {/* Polls Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {polls && polls.length > 0 ? (
           polls.map((poll: Poll) => (
