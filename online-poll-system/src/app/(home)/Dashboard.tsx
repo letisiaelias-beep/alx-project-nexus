@@ -35,7 +35,7 @@ const Dashboard: React.FC = () => {
   const total = polls?.length ?? 0;
   const active = polls?.filter((p) => p.status === "active").length ?? 0;
   const closed = polls?.filter((p) => p.status === "closed").length ?? 0;
-  const totalVotes = polls?.reduce((acc, p) => acc + (p.totalVotes ?? 0), 0) ?? 0;
+  //const _totalVotes = polls?.reduce((acc, p) => acc + (p._totalVotes ?? 0), 0) ?? 0;
 
   // Filtered & searched list
   const filtered = useMemo(() => {
@@ -43,7 +43,7 @@ const Dashboard: React.FC = () => {
     return (polls ?? [])
       .filter((p) => (statusFilter === "all" ? true : p.status === statusFilter))
       .filter((p) => (q ? (p.title || "").toLowerCase().includes(q) || String(p.id).includes(q) : true))
-      .sort((a, b) => (b.totalVotes ?? 0) - (a.totalVotes ?? 0));
+  //    .sort((a, b) => (b._totalVotes ?? 0) - (a._totalVotes ?? 0));
   }, [polls, query, statusFilter]);
 
   // Pagination
@@ -233,5 +233,6 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
+
 
 
