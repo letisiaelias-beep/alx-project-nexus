@@ -1,4 +1,4 @@
-﻿// src/app/index.tsx
+// src/app/index.tsx
 import React from "react";
 
 export default function Home() {

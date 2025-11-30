@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 
 const StepNav: React.FC<{ step: number; steps: string[] }> = ({ step, steps }) => (
   <div className="flex items-center space-x-4 mb-6">

@@ -1,4 +1,4 @@
-﻿// src/pages/PollResults.tsx
+// src/pages/PollResults.tsx
 import React, { useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";

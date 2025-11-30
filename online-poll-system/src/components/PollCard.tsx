@@ -1,4 +1,4 @@
-﻿// src/components/PollCard.tsx
+// src/components/PollCard.tsx
 import React from "react";
 import type { Poll as PollFromSlice } from "../features/polls/pollsSlice";
 

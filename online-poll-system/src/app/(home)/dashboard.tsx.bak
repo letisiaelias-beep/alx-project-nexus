@@ -1,4 +1,4 @@
-﻿import React, { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import type { RootState } from "../../store/store";
 import type { Poll } from "../../features/polls/pollsSlice";

@@ -1,4 +1,4 @@
-﻿// src/features/polls/pollsThunks.ts
+// src/features/polls/pollsThunks.ts
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { Poll } from "./pollsSlice";
 
