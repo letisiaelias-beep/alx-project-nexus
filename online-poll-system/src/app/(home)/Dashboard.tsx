@@ -1,9 +1,9 @@
-import React, { useMemo, useState } from "react";
-import { useAppSelector, useAppDispatch } from "../store/hooks";
-import type { RootState } from "../store/store";
-import type { Poll } from "../features/polls/pollsSlice";
+﻿import React, { useMemo, useState } from "react";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import type { RootState } from "../../store/store";
+import type { Poll } from "../../features/polls/pollsSlice";
 import { useNavigate } from "react-router-dom";
-import { updatePoll } from "../features/polls/pollsSlice";
+import { updatePoll } from "../../features/polls/pollsSlice";
 import {
   ResponsiveContainer,
   BarChart,
@@ -63,7 +63,7 @@ const Dashboard: React.FC = () => {
 
   const handleToggleStatus = (p: Poll) => {
     const newStatus = p.status === "active" ? "closed" : "active";
-    // optimistic update locally — replace with a thunk if you want server persistence
+    // optimistic update locally â€” replace with a thunk if you want server persistence
     dispatch(updatePoll({ ...p, status: newStatus }));
   };
 
@@ -233,3 +233,5 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
+
+

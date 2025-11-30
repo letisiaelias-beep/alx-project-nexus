@@ -1,6 +1,6 @@
-﻿// src/components/PollCard.tsx
+// src/components/PollCard.tsx
 import React from "react";
-import type { Poll as PollFromSlice } from "../features/polls/pollsSlice";
+import type { Poll as PollFromSlice } from "../features/polls/pollsslice";
 
 type PollCardProps = {
   poll: PollFromSlice;
@@ -44,7 +44,7 @@ const PollCard: React.FC<PollCardProps> = ({ poll, onOpen }) => {
         <h3 className="text-lg font-semibold text-gray-900">{poll.title || "Untitled Poll"}</h3>
 
         <p className="text-sm text-gray-500 mt-1">
-          {totalVotes} votes â€¢ <span className="capitalize">{status}</span>
+          {totalVotes} votes • <span className="capitalize">{status}</span>
         </p>
 
         <div className="mt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
@@ -64,5 +64,3 @@ const PollCard: React.FC<PollCardProps> = ({ poll, onOpen }) => {
 };
 
 export default PollCard;
-
-

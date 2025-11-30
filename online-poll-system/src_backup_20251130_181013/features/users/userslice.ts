@@ -1,4 +1,4 @@
-﻿import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export interface User {
@@ -95,5 +95,3 @@ const userSlice = createSlice({
 
 export const { logout, setUser } = userSlice.actions;
 export default userSlice.reducer;
-
-

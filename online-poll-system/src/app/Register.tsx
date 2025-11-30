@@ -1,4 +1,4 @@
-/* src/pages/Register.tsx
+﻿/* src/pages/Register.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
@@ -171,4 +171,6 @@ const Register: React.FC = () => {
 };
 
 export default Register;
+
+
 

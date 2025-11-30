@@ -1,8 +1,8 @@
-﻿// src/features/polls/pollsThunks.ts
+// src/features/polls/pollsThunks.ts
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { Poll } from "./pollsSlice";
 
-// FAKE SAMPLE POLLS (frontend-only) â€” updated question text
+// FAKE SAMPLE POLLS (frontend-only) — updated question text
 const SAMPLE_POLLS: Poll[] = [
   {
     id: "1",
@@ -63,5 +63,3 @@ export const createPoll = createAsyncThunk(
     }
   }
 );*/
-
-

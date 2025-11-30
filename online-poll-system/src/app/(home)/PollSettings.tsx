@@ -1,5 +1,5 @@
-import React from "react";
-import Toggle from "../components/Toggle";
+﻿import React from "react";
+import Toggle from "../../components/toggle";
 
 type Props = {
   allowMultiple: boolean;
@@ -25,3 +25,5 @@ const PollSettings: React.FC<Props> = ({ allowMultiple, setAllowMultiple, allowA
 );
 
 export default PollSettings;
+
+
