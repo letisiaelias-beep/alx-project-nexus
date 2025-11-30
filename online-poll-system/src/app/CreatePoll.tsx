@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../store/hooks";
-import { createPoll } from "../features/polls/pollsthunks";
+import { createPoll } from "../features/polls/pollsThunks";
 
 type Option = { id: string; text: string };
 
@@ -62,3 +62,5 @@ const CreatePoll: React.FC = () => {
 };
 
 export default CreatePoll;
+
+

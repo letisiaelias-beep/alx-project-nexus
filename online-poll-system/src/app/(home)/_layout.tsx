@@ -1,4 +1,4 @@
-// src/app/(home)/_layout.tsx
+﻿// src/app/(home)/_layout.tsx
 import { Tabs } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
 
@@ -35,3 +35,5 @@ export default function HomeLayout() {
     </Tabs>
   );
 }
+
+

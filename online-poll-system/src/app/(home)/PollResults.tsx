@@ -1,9 +1,9 @@
-// src/pages/PollResults.tsx
+﻿// src/pages/PollResults.tsx
 import React, { useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 import type { RootState } from "../../store/store";
-import type { Poll } from "../../features/polls/pollsslice";
+import type { Poll } from "../../features/polls/pollsSlice";
 
 import {
   ResponsiveContainer,
@@ -61,7 +61,7 @@ const PollResults: React.FC = () => {
   );
 
   const chartData = results.map((r) => ({
-    name: r.text.length > 20 ? r.text.slice(0, 20) + "…" : r.text,
+    name: r.text.length > 20 ? r.text.slice(0, 20) + "â€¦" : r.text,
     votes: r.votes,
   }));
 
@@ -192,7 +192,7 @@ const PollResults: React.FC = () => {
 
   // Prepare data for recharts
   const chartData = results.map((r: PollOption) => ({
-    name: r.text.length > 20 ? r.text.slice(0, 20) + "…" : r.text,
+    name: r.text.length > 20 ? r.text.slice(0, 20) + "â€¦" : r.text,
     votes: r.votes,
   }));
 
@@ -256,3 +256,4 @@ const PollResults: React.FC = () => {
 
 export default PollResults;
 */
+

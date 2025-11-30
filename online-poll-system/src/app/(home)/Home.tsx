@@ -1,11 +1,11 @@
-// src/pages/Home.tsx
+﻿// src/pages/Home.tsx
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { fetchPolls } from "../../features/polls/pollsthunks";
+import { fetchPolls } from "../../features/polls/pollsThunks";
 import PollCard from "../../components/pollcard";
 import { useNavigate } from "react-router-dom";
 import type { RootState } from "../../store/store";
-import type { Poll } from "../../features/polls/pollsslice";
+import type { Poll } from "../../features/polls/pollsSlice";
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -65,3 +65,5 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+
+

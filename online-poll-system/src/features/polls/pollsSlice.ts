@@ -1,4 +1,4 @@
-// src/features/polls/pollsSlice.ts
+﻿// src/features/polls/pollsSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchPolls, createPoll } from "./pollsThunks"; // ensure these thunks exist
 
@@ -194,3 +194,5 @@ export const { setPolls, addPoll, updatePoll, removePoll, setLoading, setError }
   pollsSlice.actions;
 
 export default pollsSlice.reducer;*/
+
+

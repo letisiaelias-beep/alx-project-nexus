@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 
 type Props = {
   checked: boolean;
@@ -20,3 +20,5 @@ const Toggle: React.FC<Props> = ({ checked, onChange, label }) => (
 );
 
 export default Toggle;
+
+

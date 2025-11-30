@@ -1,4 +1,4 @@
-/* import React, { useState } from "react";
+﻿/* import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks"; 
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../features/users/userSlice"; 
@@ -65,7 +65,7 @@ const Login: React.FC = () => {
       </form>
 
       <p className="mt-4 text-center text-sm text-gray-500">
-        Don’t have an account?{" "}
+        Donâ€™t have an account?{" "}
         <span
           className="text-teal-600 cursor-pointer"
           onClick={() => navigate("/register")}
@@ -147,7 +147,7 @@ const Login: React.FC = () => {
       </form>
 
       <p className="mt-4 text-center text-sm text-gray-500">
-        Don’t have an account?{" "}
+        Donâ€™t have an account?{" "}
         <span
           className="text-teal-600 cursor-pointer"
           onClick={() => navigate("/register")}
@@ -160,3 +160,5 @@ const Login: React.FC = () => {
 };
 
 export default Login;
+
+
