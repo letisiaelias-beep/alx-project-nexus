@@ -1,13 +1,10 @@
 ﻿// src/app/index.tsx
-import { View, Text } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import React from "react";
 
-export default function Index() {
+export default function Home() {
   return (
-    <SafeAreaView className="flex-1 items-center justify-center bg-white">
-      <Text className="text-2xl font-bold">Welcome to Project Nexus!</Text>
-    </SafeAreaView>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white">
+      <h1 className="text-2xl font-bold">Welcome to Project Nexus!</h1>
+    </div>
   );
 }
-
-

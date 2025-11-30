@@ -1,6 +1,6 @@
 ﻿// src/features/polls/pollsSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchPolls, createPoll } from "./pollsthunks"; // ensure these thunks exist
+import { fetchPolls, createPoll } from "./pollsThunks"; // ensure these thunks exist
 
 export interface PollOption {
   id: string;
