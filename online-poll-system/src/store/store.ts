@@ -1,4 +1,4 @@
-﻿import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import pollsReducer from "../features/polls/pollsSlice";
 import userReducer from "../features/users/userSlice";
 

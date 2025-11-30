@@ -1,4 +1,4 @@
-﻿// src/pages/Home.tsx
+// src/pages/Home.tsx
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { fetchPolls } from "../../features/polls/pollsThunks";
