@@ -1,10 +1,10 @@
 // src/App.tsx
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import CreatePoll from "./pages/CreatePoll";
-import PollDetail from "./pages/PollDetail";
-import Dashboard from "./pages/Dashboard";
+import Home from "./app/(home)/Home";
+import CreatePoll from "./app/CreatePoll";
+import PollDetail from "./app/(home)/PollDetail";
+import Dashboard from "./app/(home)/Dashboard";
 
 export default function App() {
   return (

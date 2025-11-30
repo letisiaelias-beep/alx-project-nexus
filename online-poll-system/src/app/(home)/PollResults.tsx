@@ -1,9 +1,9 @@
 // src/pages/PollResults.tsx
 import React, { useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useAppSelector } from "../store/hooks";
-import type { RootState } from "../store/store";
-import type { Poll } from "../features/polls/pollsSlice";
+import { useAppSelector } from "../../store/hooks";
+import type { RootState } from "../../store/store";
+import type { Poll } from "../../features/polls/pollsSlice";
 
 import {
   ResponsiveContainer,

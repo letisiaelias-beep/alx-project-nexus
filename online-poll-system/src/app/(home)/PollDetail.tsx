@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useAppSelector, useAppDispatch } from "../store/hooks";
-import type { RootState } from "../store/store";
-import type { Poll, PollOption } from "../features/polls/pollsSlice";
-import { updatePoll } from "../features/polls/pollsSlice";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import type { RootState } from "../../store/store";
+import type { Poll, PollOption } from "../../features/polls/pollsSlice";
+import { updatePoll } from "../../features/polls/pollsSlice";
 
 const PollDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
