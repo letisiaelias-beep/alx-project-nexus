@@ -90,7 +90,7 @@ export default Register;*/
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { registerUser } from "../features/users/userslice";
+import { registerUser } from "../features/users/userSlice";
 import type { RootState } from "../store/store";
 
 const Register: React.FC = () => {
