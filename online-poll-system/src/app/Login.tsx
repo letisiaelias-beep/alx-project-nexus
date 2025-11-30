@@ -83,7 +83,7 @@ export default Login;*/
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../features/users/userSlice";
+import { loginUser } from "../features/users/userslice";
 import type { RootState } from "../store/store";
 
 const Login: React.FC = () => {

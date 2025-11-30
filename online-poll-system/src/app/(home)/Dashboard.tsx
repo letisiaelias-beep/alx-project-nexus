@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import type { RootState } from "../../store/store";
-import type { Poll } from "../../features/polls/pollsSlice";
+import type { Poll } from "../../features/polls/pollsslice";
 import { useNavigate } from "react-router-dom";
-import { updatePoll } from "../../features/polls/pollsSlice";
+import { updatePoll } from "../../features/polls/pollsslice";
 import {
   ResponsiveContainer,
   BarChart,

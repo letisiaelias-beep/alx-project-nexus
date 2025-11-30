@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../store/hooks";
-import { createPoll } from "../features/polls/pollsThunks";
+import { createPoll } from "../features/polls/pollsthunks";
 
 type Option = { id: string; text: string };
 
