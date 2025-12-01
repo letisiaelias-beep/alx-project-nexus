@@ -1,51 +1,46 @@
-# alx-project-nexus
+# Getting Started with Create React App
 
-# Poll Nexus — Online Poll System
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-A responsive web app to create polls, vote, and see live results. Built with Next.js, TypeScript, Tailwind CSS, and Socket.io for real-time updates.
+## Available Scripts
 
-**Live demo:** <paste your deployed URL here>  
-**Repo:** https://github.com/<your-username>/<repo-name>
+In the project directory, you can run:
 
-## Features
-- Create polls with multiple options and optional expiry
-- Cast votes (single or multi-option as configured)
-- Live results with charts (updates via WebSockets)
-- Browse polls with search, filters (active/expired), and pagination
-- Share poll links; basic anti-duplicate-vote protection (IP/cookie or auth)
+### `npm start`
 
-## Tech
-Next.js · TypeScript · Tailwind CSS · Redux Toolkit / React Query · Recharts · Socket.io · Jest / React Testing Library
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Project Overview
-Project Nexus is a documentation repository that captures my journey through the ProDev Frontend Engineering program. It explains the concepts I learned, the projects I built, problems I encountered, and the engineering practices I adopted.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-### This repo is meant to be:
-* A readable, well-organized single source-of-truth for my portfolio and reflections.
-* Useful to future collaborators and employers who want to understand my process.
-* A living document — updated as I learn and refactor code.
+### `npm test`
 
-### Key Technologies
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-- **Frontend frameworks & meta-frameworks:** Next.js (routing, SSR, SSG, middleware, app router), React fundamentals and hooks.
-- **Styling:** Tailwind CSS, NativeWind (for RN), CSS Modules, responsive design techniques.
-- **TypeScript:**  Gradual typing, utility types, strict mode, and common patterns.
-- **State management & data fetching:** React Query / SWR patterns, context, lifting state.
--  **APIs:** REST and GraphQL integration, authentication flows, CORS considerations.
--  **Build & Tooling:** Vite / Next.js build processes, bundlers, linting (ESLint), formatting (Prettier).
-- **Testing:** Unit testing basics (Jest), component testing (React Testing Library).
-- **Accessibility & Performance:** Semantic HTML, Lighthouse metrics, image optimization.
-- **Mobile & PWA:** Basics of mobile-first design, Expo/React Native, PWA fundamentals.
+### `npm run build`
 
-#### Important Frontend Concepts
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-- Routing (client-side vs server-side), incremental static regeneration.
-- Component design patterns: presentational vs container components, compound components.
-- Design systems, atomic design, and reusable component libraries.
-- Progressive enhancement, graceful degradation, and feature detection.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-#### Tools & Workflows
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-- **Git workflow:** feature branches, PRs, meaningful commit messages, semantic commits.
-- **CI/CD basics:** GitHub Actions for lint/test/build and Vercel/Netlify for deployments.
-- **Debugging tools:** browser devtools, React DevTools
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
